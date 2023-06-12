@@ -5,7 +5,6 @@ import com.godcoder.myhome.model.Role;
 import com.godcoder.myhome.model.User;
 import com.godcoder.myhome.repository.BoardRepository;
 import com.godcoder.myhome.repository.UserRepository;
-import org.omg.SendingContext.RunTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
