@@ -2,6 +2,8 @@ package com.godcoder.myhome.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -14,6 +16,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
+@Getter @Setter
 public class Board extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,19 +28,24 @@ public class Board extends BaseEntity {
     
     private String content;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    @JsonIgnore
-    private User user;
-
     @CreatedDate
+    @Column(name = "created_date", updatable = false)
     private LocalDateTime createdDate;       // 생성일시
     @LastModifiedDate
+    @Column(name = "last_modified_date")
     private LocalDateTime lastModifiedDate;  // 수정일시
 
     @CreatedBy
+    @Column(name = "created_by", updatable = false)
     private String createdBy;                // 생성자ID
     @LastModifiedBy
+    @Column(name = "last_modified_by")
     private String lastModifiedBy;           // 수정자ID
+
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private User user;
 
 }
