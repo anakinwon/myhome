@@ -19,7 +19,9 @@ public class MyhomeApplication {
 
 	// 스프링 데이터 JPA Auditing 사용 시 ==============================================
 	private String createdByID = "IN_ADMIN";
-
+//
+//	AuditConfig auditConfig = new AuditConfig();
+//
 	@Bean
 	public AuditorAware<String> auditorProvider() {
 //		return new AuditorAware<String>() {
