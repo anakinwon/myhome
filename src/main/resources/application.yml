@@ -13,18 +13,29 @@ spring:
 
 logging:
   level:
-    org.hibernate.SQL: DEBUG
-    com.godcoder: DEBUG
-    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.SQL: debug
+    com.pisien: debug
+    #org.hibernate.type.descriptor.sql.BasicBinder: trace   # 쿼리 파라미터 로그 남기기
 
   jpa:
+    hibernate:                          #    open-in-view: false   # OSIV종료 (Off Session In View) : 커넥션 풀 부족현상 해결
+      ddl-auto: none
     properties:
       hibernate:
         format_sql: true
+        default_batch_fetch_size: 1000  # 성능최적화를 위한 페이지 옵션
+        use_sql_comment: true
+
+  data:
+    web:
+      pageable:
+        default-page-size: 5            # 페이지 사이즈
+        max-page-size: 2000             # 최대 사이즈
+#        one-indexed-parameters: true   #  index 설정 0 or 1
 
 
 mybatis:
-  type-aliases-package: com.godcoder.myhome.model
+  type-aliases-package: com.pisien.myhome.model
   configuration:
     map-underscore-to-camel-case: true
   mapper-locations: classpath:mapper/**/*.xml
