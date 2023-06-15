@@ -24,14 +24,15 @@ DROP TABLE `user`;
 DROP TABLE `role`;
 DROP TABLE `board`;
 
-
-
 -- 테이블 mydb.user 구조 내보내기
 CREATE TABLE IF NOT EXISTS `user` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) NOT NULL,
+  `username` varchar(30) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `enabled` bit(1) NOT NULL,
+  `real_name` varchar(50) NOT NULL,
+  `phone` varchar(20) NULL,
+  `email` varchar(100)  NULL,
+  `use_yn` bit(1) NOT NULL,
   `created_date` DATETIME ,
   `created_by` varchar(100) NULL DEFAULT 'ADMIN',
   `last_modified_date` DATETIME ,
@@ -42,11 +43,11 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 -- 테이블 데이터 mydb.user:~3 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `created_date`, `created_by`, `last_modified_date`, `last_modified_by`) VALUES
-	(1, 'admin' , '$2a$10$1tsuphF/pUbVfC0d98Lz8.uXL.Idx84unQLmwRQd4t3B4FwGtzK4y', b'1', NOW(), 'ADMIN', NOW(), 'UP'),
-	(2, 'anakin', '$2a$10$1tsuphF/pUbVfC0d98Lz8.uXL.Idx84unQLmwRQd4t3B4FwGtzK4y', b'1', NOW(), 'ADMIN', NOW(), 'UP'),
-	(3, 'padme' , '$2a$10$1tsuphF/pUbVfC0d98Lz8.uXL.Idx84unQLmwRQd4t3B4FwGtzK4y', b'1', NOW(), 'ADMIN', NOW(), 'UP'),
-	(4, 'yoda'  , '$2a$10$1tsuphF/pUbVfC0d98Lz8.uXL.Idx84unQLmwRQd4t3B4FwGtzK4y', b'1', NOW(), 'ADMIN', NOW(), 'UP')
+INSERT INTO `user` (`id`, `username`, `password`, `real_name`, `phone`, `email`, `use_yn`, `created_date`, `created_by`, `last_modified_date`, `last_modified_by`) VALUES
+	(1, 'admin' , '$2a$10$1tsuphF/pUbVfC0d98Lz8.uXL.Idx84unQLmwRQd4t3B4FwGtzK4y', 'admin' , '010-1234-5678', 'admin@pisien.com' , b'1', NOW(), 'ADMIN', NOW(), 'UP'),
+	(2, 'anakin', '$2a$10$1tsuphF/pUbVfC0d98Lz8.uXL.Idx84unQLmwRQd4t3B4FwGtzK4y', 'anakin', '010-1234-5678', 'anakin@pisien.com', b'1', NOW(), 'ADMIN', NOW(), 'UP'),
+	(3, 'padme' , '$2a$10$1tsuphF/pUbVfC0d98Lz8.uXL.Idx84unQLmwRQd4t3B4FwGtzK4y', 'padme' , '010-1234-5678', 'padme@pisien.com' , b'1', NOW(), 'ADMIN', NOW(), 'UP'),
+	(4, 'yoda'  , '$2a$10$1tsuphF/pUbVfC0d98Lz8.uXL.Idx84unQLmwRQd4t3B4FwGtzK4y', 'yoda'  , '010-1234-5678', 'yoda@pisien.com'  , b'1', NOW(), 'ADMIN', NOW(), 'UP')
 ;
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
@@ -133,40 +134,7 @@ INSERT INTO `board` (`id`, `user_id`, `title`, `content`, `created_date`, `creat
 	(47, 1, 'hi4', 'Content', NOW(), 'ADMIN', NOW(), 'UP'),
 	(48, 2, 'TEST', 'TEST', NOW(), 'ADMIN', NOW(), 'UP'),
 	(49, 1, '제목1', '내용!!! 테스트', NOW(), 'ADMIN', NOW(), 'UP'),
-	(50, 2, '안녕하세요', 'Spring Boot! 테스트', NOW(), 'ADMIN', NOW(), 'UP')
-;
-
-
--- 테이블 mydb.user_role 구조 내보내기
-CREATE TABLE IF NOT EXISTS `user_role` (
-  `user_id` bigint(20) NOT NULL,
-  `role_id` bigint(20) NOT NULL,
-  PRIMARY KEY (`user_id`,`role_id`),
-  KEY `FK_user_role_role` (`role_id`)
-   , CONSTRAINT `FK_user_role_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`),
-     CONSTRAINT `FK_user_role_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
--- 테이블 데이터 mydb.user_role:~4 rows (대략적) 내보내기
-/*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
-INSERT INTO `user_role` (`user_id`, `role_id`) VALUES
-	(1, 5),
-	(1, 6),
-	(2, 5),
-	(2, 6),
-	(3, 5),
-	(3, 6),
-	(4, 5),
-	(4, 6);
-/*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
-
-
-
-INSERT INTO `board` (`id`, `user_id`, `title`, `content`, `created_date`, `created_by`, `last_modified_date`, `last_modified_by`) VALUES
+	(50, 2, '안녕하세요', 'Spring Boot! 테스트', NOW(), 'ADMIN', NOW(), 'UP'),
 (1001, 1, '안녕하세요', 'Spring Boot! 테스트', NOW(), 'ADMIN', NOW(), 'UP'),
 (1002, 2, '안녕하세요', 'Spring Boot! 테스트', NOW(), 'ADMIN', NOW(), 'UP'),
 (1003, 3, '안녕하세요', 'Spring Boot! 테스트', NOW(), 'ADMIN', NOW(), 'UP'),
@@ -6530,7 +6498,34 @@ INSERT INTO `board` (`id`, `user_id`, `title`, `content`, `created_date`, `creat
 (7361, 1, '안녕하세요', 'Spring Boot! 테스트', NOW(), 'ADMIN', NOW(), 'UP'),
 (7362, 2, '안녕하세요', 'Spring Boot! 테스트', NOW(), 'ADMIN', NOW(), 'UP'),
 (7363, 3, '안녕하세요', 'Spring Boot! 테스트', NOW(), 'ADMIN', NOW(), 'UP'),
-(7364, 4, '안녕하세요', 'Spring Boot! 테스트', NOW(), 'ADMIN', NOW(), 'UP');
+(7364, 4, '안녕하세요', 'Spring Boot! 테스트', NOW(), 'ADMIN', NOW(), 'UP')
+;
 
-/*!40000 ALTER TABLE `board` ENABLE KEYS */;
+
+-- 테이블 mydb.user_role 구조 내보내기
+CREATE TABLE IF NOT EXISTS `user_role` (
+  `user_id` bigint(20) NOT NULL,
+  `role_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`user_id`,`role_id`),
+  KEY `FK_user_role_role` (`role_id`)
+   , CONSTRAINT `FK_user_role_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`),
+     CONSTRAINT `FK_user_role_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+-- 테이블 데이터 mydb.user_role:~4 rows (대략적) 내보내기
+/*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
+INSERT INTO `user_role` (`user_id`, `role_id`) VALUES
+	(1, 5),
+	(1, 6),
+	(2, 5),
+	(2, 6),
+	(3, 5),
+	(3, 6),
+	(4, 5),
+	(4, 6);
+/*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
 

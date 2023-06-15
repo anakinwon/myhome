@@ -21,14 +21,11 @@
         <label for="username" class="sr-only">Username</label>
         <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-        <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone">
-<!--        <input type="text" class="form-control"-->
-<!--               th:classappend="${#fields.hasErrors('phone')} ? 'is-invalid'" id="phone" th:field="*{phone}">-->
-<!--        <div class="invalid-feedback" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">-->
-<!--            휴대폰 에러 메시지-->
-<!--        </div>-->
-        <input type="text" id="email" name="email" class="form-control" placeholder="Email">
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required autofocus>
+
+        <input type="text" id="realName" name="realName" class="form-control" placeholder="RealName" required autofocus>
+        <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone" required autofocus>
+        <input type="text" id="email" name="email" class="form-control" placeholder="Email" required autofocus>
         <!-- <div class="checkbox mb-3">
           <label>
             <input type="checkbox" value="remember-me"> Remember me

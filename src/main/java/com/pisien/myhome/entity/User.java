@@ -11,6 +11,8 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,13 +28,20 @@ public class User extends BaseEntity  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Size(min=4, max=50, message = "사용자ID는 4자 ~ 50자 이내 필수입력입니다.")
     private String username;
+    @NotNull
+    @Size(min=4, max=100, message = "비밀번호는 4자 ~ 30자 이내 필수입력입니다.")
     private String password;
+
+    @NotNull
+    @Size(min=2, max=30, message = "성명은 2자 ~ 30자 이내 필수입력입니다.")
+    private String realName;
 
     private String phone;
     private String email;
-
-    private Boolean enabled;
+    private Boolean useYn;
 
     @JsonIgnore
     @ManyToMany
