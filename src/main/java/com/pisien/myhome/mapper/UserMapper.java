@@ -1,6 +1,6 @@
 package com.pisien.myhome.mapper;
 
-import com.pisien.myhome.model.User;
+import com.pisien.myhome.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

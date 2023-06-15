@@ -1,6 +1,6 @@
 package com.pisien.myhome.controller;
 
-import com.pisien.myhome.model.Board;
+import com.pisien.myhome.entity.Board;
 import com.pisien.myhome.repository.BoardRepository;
 import com.pisien.myhome.service.BoardService;
 import com.pisien.myhome.validator.BoardValidator;

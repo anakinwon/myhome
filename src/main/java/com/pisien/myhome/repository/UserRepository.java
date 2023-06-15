@@ -1,6 +1,6 @@
 package com.pisien.myhome.repository;
 
-import com.pisien.myhome.model.User;
+import com.pisien.myhome.entity.User;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

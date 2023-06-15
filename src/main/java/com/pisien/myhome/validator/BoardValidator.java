@@ -1,6 +1,6 @@
 package com.pisien.myhome.validator;
 
-import com.pisien.myhome.model.Board;
+import com.pisien.myhome.entity.Board;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;

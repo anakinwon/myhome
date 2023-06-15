@@ -1,8 +1,8 @@
 package com.pisien.myhome.controller;
 import com.pisien.myhome.mapper.UserMapper;
-import com.pisien.myhome.model.Board;
-import com.pisien.myhome.model.QUser;
-import com.pisien.myhome.model.User;
+import com.pisien.myhome.entity.Board;
+import com.pisien.myhome.entity.QUser;
+import com.pisien.myhome.entity.User;
 import com.pisien.myhome.repository.UserRepository;
 import com.querydsl.core.types.Predicate;
 import lombok.extern.slf4j.Slf4j;

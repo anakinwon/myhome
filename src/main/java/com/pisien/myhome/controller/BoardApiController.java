@@ -1,5 +1,5 @@
 package com.pisien.myhome.controller;
-import com.pisien.myhome.model.Board;
+import com.pisien.myhome.entity.Board;
 import com.pisien.myhome.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;

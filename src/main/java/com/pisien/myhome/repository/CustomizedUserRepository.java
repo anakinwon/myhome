@@ -1,6 +1,6 @@
 package com.pisien.myhome.repository;
 
-import com.pisien.myhome.model.User;
+import com.pisien.myhome.entity.User;
 
 import java.util.List;
 

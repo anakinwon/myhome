@@ -1,7 +1,7 @@
 package com.pisien.myhome.controller;
 
-import com.pisien.myhome.model.Board;
-import com.pisien.myhome.model.User;
+import com.pisien.myhome.entity.Board;
+import com.pisien.myhome.entity.User;
 import com.pisien.myhome.repository.UserRepository;
 import com.pisien.myhome.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.pisien.myhome.repository;
 
-import com.pisien.myhome.model.Board;
+import com.pisien.myhome.entity.Board;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

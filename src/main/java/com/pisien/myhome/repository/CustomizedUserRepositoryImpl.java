@@ -1,7 +1,7 @@
 package com.pisien.myhome.repository;
 
-import com.pisien.myhome.model.QUser;
-import com.pisien.myhome.model.User;
+import com.pisien.myhome.entity.QUser;
+import com.pisien.myhome.entity.User;
 import com.querydsl.jpa.impl.JPAQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;

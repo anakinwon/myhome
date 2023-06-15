@@ -1,4 +1,4 @@
-package com.pisien.myhome.model;
+package com.pisien.myhome.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;

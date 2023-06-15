@@ -1,4 +1,4 @@
-package com.pisien.myhome.model;
+package com.pisien.myhome.entity;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
