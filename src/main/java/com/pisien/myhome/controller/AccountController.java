@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/account")
@@ -37,7 +38,11 @@ public class AccountController {
     }
 
     @GetMapping("/register")
-    public String register() {
+    public String register(Model model) {
+        List<User> users = userRepository.findAll();
+
+        model.addAttribute("users", users);
+
         return "account/register";
     }
 

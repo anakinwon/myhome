@@ -2,6 +2,7 @@ package com.pisien.myhome.entity;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -28,17 +29,18 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)  // 스프링 데이터 JPA 사용 어노테이션 // 해당 어노테이션을 일일이 엔티티에 입력하기 귀찮을 때는 "META-INF/orm.xml" 등록하면 된다.
 public class BaseTimeEntity {
 
-    @CreatedDate
-    @Column(updatable = false)               // 등록 후에 변경되지 못하도록 처리
-    private LocalDateTime createdDate;       // 등록일시
+    @LastModifiedBy
+    private String lastModifiedBy ;               // 수정자ID
+
     @LastModifiedDate
     private LocalDateTime lastModifiedDate;       // 수정일시
 
 //    @CreatedBy
 //    @Column(updatable = false)               // 등록 후에 변경되지 못하도록 처리
 //    private String createdBy ;               // 등록자ID
-//    @LastModifiedBy
-//    private String lastModifiedBy ;  // 수정자ID
-//    //private String lastModifiedBy ="UP_ADMIN";  // 수정자ID
+
+//    @CreatedDate
+//    @Column(updatable = false)               // 등록 후에 변경되지 못하도록 처리
+//    private LocalDateTime createdDate;       // 등록일시
 
 }

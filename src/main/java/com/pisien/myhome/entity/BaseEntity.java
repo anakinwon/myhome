@@ -2,12 +2,14 @@ package com.pisien.myhome.entity;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
+import java.time.LocalDateTime;
 
 /**
  *  <Auditing>
@@ -29,16 +31,16 @@ public class BaseEntity extends BaseTimeEntity {
     @CreatedBy
     @Column(updatable = false)               // 등록 후에 변경되지 못하도록 처리
     private String createdBy ;               // 등록자ID
-    @LastModifiedBy
-    private String lastModifiedBy ;  // 수정자ID
+    @CreatedDate
+    @Column(updatable = false)               // 등록 후에 변경되지 못하도록 처리
+    private LocalDateTime createdDate;       // 등록일시
 
 
     // 입력수정 시간과 입력수정자를 분리해서 사용하면 보다 효율적이다.
     // BaseTimeEntity를 상속받아 사용한다.
-//    @CreatedDate
-//    @Column(updatable = false)               // 등록 후에 변경되지 못하도록 처리
-//    private LocalDateTime createdDate;       // 등록일시
 //
+//    @LastModifiedBy
+//    private String lastModifiedBy ;  // 수정자ID
 //    @LastModifiedDate
 //    private LocalDateTime lastModifiedDate;       // 수정일시
 
